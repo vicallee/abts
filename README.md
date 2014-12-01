@@ -3,10 +3,10 @@ abts
 
 A modified version of apache C test suite
 
-abts been the most concise testing framework, and now I will take it out from apache, and then use past experience to make some changes:<p>
-1. further simplified to make it easier to understand and use, test_suite corresponding unit, test_case corresponding interface.<p>
-2. The only abts.h and abts.c, can easily be integrated into various c or cpp project.<p>
-3. Increase the -f parameter directly output to a file.<p>
+abts is the most concise testing framework, and now I will take it out from apache, and then to make some changes use my past experience:<p>
+1. Further simplified can make it easier to understand and use, test_suite corresponding unit, test_case corresponding interface.<p>
+2. Only the abts.h and abts.c can integrated into various c or cpp project easily.<p>
+3. Increase the -f parameter output to a file directly.<p>
 
 
 How to use:

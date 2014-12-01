@@ -10,8 +10,8 @@ abts been the most concise testing framework, and now I will take it out from ap
 
 
 How to use:
-In the test case file test_xx.c
-<code>
+In the test case file test_xx.c<p>
+<pre>
 static void test_xx_func (abts_case * tc, void * arg)
 {
 	ABTS_ASSERT (1, "Condition is false");
@@ -25,10 +25,10 @@ abts_suite * test_xx (abts_suite * suite)
 
 	return suite;
 }
-</code>
+</pre>
 
-In the main function:
-<code>
+In the main function:<p>
+<pre>
 extern abts_suite * test_xx (abts_suite * suite);
 
 static abts_suite_fntype testfns [] = {
@@ -40,4 +40,4 @@ int main (int argc, char * argv [])
 {
 	return abts_main (argc, argv, testfns);
 }
-</code>
+</pre>

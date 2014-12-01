@@ -6,7 +6,7 @@
 extern abts_suite *test_bpool (abts_suite *suite);
 
 static abts_suite_fntype testfns[] = {
-	test_bpool
+	test_bpool,
 	NULL
 };
 

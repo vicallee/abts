@@ -13,14 +13,16 @@ static bpool_t pool;
 
 static void test_bpool_perf (abts_case *tc, void *arg)
 {
-	unsigned i, j, k, n, ts, testn = (unsigned)arg;
+	unsigned i, j, k, n, ts, testn = (unsigned)(unsigned long)arg;
 	void **pblock;
+
+	not_pass = 1;
 
 	n = testn;
 	k = (n+4)/5;
 	pblock = (void**)calloc (1, sizeof(void*) * (n+k));
 	if (!pblock) 
-		break;
+		return;
 	
 	bpool_init (&pool, SIZE_AUTO_EXPAND, 31);
 
@@ -56,7 +58,7 @@ static void test_bpool_perf (abts_case *tc, void *arg)
 	for (j=n; j<n+k; j++) {
 		pblock[j] = bpool_alloc_block (&pool);
 		if (!pblock[j]) {
-			ABTS_TRUE (pblock[j]);
+			ABTS_TRUE (pblock[j]!=NULL);
 		}
 	}
 	ABTS_TRUE (pool.nallblock-pool.nfreeblock==n);
@@ -145,7 +147,7 @@ abts_suite *test_bpool (abts_suite *suite)
 	unsigned nperfs = sizeof(perfs)/sizeof(perfs[0]);
 	
 	for (i=0, not_pass=0; i<nperfs && not_pass==0; i++) {
-		abts_run_test (suite, test_bpool_perf, (void*)perfs[i]);
+		abts_run_test (suite, test_bpool_perf, (void*)(unsigned long)perfs[i]);
 	}
 	
 	return suite;

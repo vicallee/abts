@@ -318,7 +318,7 @@ int abts_main(int argc, char *argv[], abts_suite_fntype fns[])
         }
 		if (!strcmp(argv[i], "-f")) {
 			if (++i == argc) {
-				fprintf(errfp, "Failed! option '-f' require a file name.\n", argv[i]);
+				fprintf(errfp, "Failed! option '-f' require a file name.\n");
 				exit(1);
 			}
 			quiet = 1;

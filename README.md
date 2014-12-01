@@ -11,31 +11,33 @@ abts been the most concise testing framework, and now I will take it out from ap
 
 How to use:
 In the test case file test_xx.c
+<code>
+static void test_xx_func (abts_case * tc, void * arg)
+{
+	ABTS_ASSERT (1, "Condition is false");
+}
+abts_suite * test_xx (abts_suite * suite)
+{
+	suite = abts_add_suite (suite, "bpool");
 
-static void test_xx_func (abts_case * tc, void * arg)<p>
-{<p>
-	ABTS_ASSERT (1, "Condition is false");<p>
-}<p>
-abts_suite * test_xx (abts_suite * suite)<p>
-{<p>
-	suite = abts_add_suite (suite, "bpool");<p>
+	abts_run_test (suite, test_xx_func, NULL);
+	// add other test case function
 
-	abts_run_test (suite, test_xx_func, NULL);<p>
-	// add other test case function<p>
-
-	return suite;<p>
-}<p>
+	return suite;
+}
+</code>
 
 In the main function:
-
+<code>
 extern abts_suite * test_xx (abts_suite * suite);
 
-static abts_suite_fntype testfns [] = {<p>
-	test_xx,<p>
-	NULL<p>
-};<p>
+static abts_suite_fntype testfns [] = {
+	test_xx,
+	NULL
+};
 
-int main (int argc, char * argv [])<p>
-{<p>
-	return abts_main (argc, argv, testfns);<p>
-}<p>
+int main (int argc, char * argv [])
+{
+	return abts_main (argc, argv, testfns);
+}
+</code>
